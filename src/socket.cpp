@@ -28,6 +28,7 @@ Socket::Socket(boost::asio::io_service& io_service, const std::string& secret, u
     : m_socket(io_service, udp::endpoint(udp::v4(), port)),
       m_secret(secret)
 {
+    //m_socket.set_option(tcp::no_delay(true));
 }
 
 void Socket::asyncReceive(const std::function<void(const error_code&, const std::optional<Packet>&)>& callback)
